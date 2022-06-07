@@ -8,11 +8,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.skypro.homework.dto.CreateUser;
+import ru.skypro.homework.dto.ResponseWrapper;
+import ru.skypro.homework.dto.User;
 import ru.skypro.homework.dto.pass.NewPassword;
 import ru.skypro.homework.dto.pass.ResetPassword;
 import ru.skypro.homework.dto.pass.ResetPasswordConfirm;
-import ru.skypro.homework.dto.UpdateUser;
-import ru.skypro.homework.dto.User;
 
 @RestController
 @RequestMapping("users")
@@ -20,42 +21,42 @@ import ru.skypro.homework.dto.User;
 public class UserController {
 
     @GetMapping
-    public String getALLUsers() {
-        return "asd";
+    public ResponseWrapper<User> getALLUsers() {
+        return new ResponseWrapper<>();
     }
 
     @PostMapping
-    public String addUser(@RequestBody User user) {
-        return "asd";
+    public CreateUser addUser(@RequestBody CreateUser user) {
+        return new CreateUser();
     }
 
     @GetMapping("/me")
-    public String getUsers() {
-        return "asd";
+    public ResponseWrapper<User> getUsers() {
+        return new ResponseWrapper<>();
     }
 
     @PatchMapping("/me")
-    public String updateUser(@RequestBody UpdateUser user) {
-        return "asd";
+    public User updateUser(@RequestBody User user) {
+        return new User();
     }
 
     @GetMapping("/{id}}")
-    public String getUser(@PathVariable("id") Integer id) {
-        return "asd";
+    public User getUser(@PathVariable("id") Integer id) {
+        return new User();
     }
 
     @PostMapping("/reset_password")
-    public String resetPassword(@RequestBody ResetPassword resetPassword) {
-        return "asd";
+    public ResetPassword resetPassword(@RequestBody ResetPassword resetPassword) {
+        return new ResetPassword();
     }
 
     @PostMapping("/reset_password_confirm")
-    public String resetPasswordConfirm(@RequestBody ResetPasswordConfirm resetPasswordConfirm) {
-        return "asd";
+    public ResetPasswordConfirm resetPasswordConfirm(@RequestBody ResetPasswordConfirm resetPasswordConfirm) {
+        return new ResetPasswordConfirm();
     }
 
     @PostMapping("/set_password")
-    public String setPassword(@RequestBody NewPassword newPassword) {
-        return "asd";
+    public NewPassword setPassword(@RequestBody NewPassword newPassword) {
+        return new NewPassword();
     }
 }
