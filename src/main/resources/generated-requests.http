@@ -3,3 +3,8 @@
 GET http://localhost:8080/get
 Content-Type: application/json
 Authorization: Basic user password
+
+###
+GET http://localhost:8080/ads/asddsfsdf/comment
+Content-Type: application/json
+Authorization: Basic user password
