@@ -40,7 +40,7 @@ public class UserController {
         return new User();
     }
 
-    @GetMapping("/{id}}")
+    @GetMapping("/{id}")
     public User getUser(@PathVariable("id") Integer id) {
         return new User();
     }
