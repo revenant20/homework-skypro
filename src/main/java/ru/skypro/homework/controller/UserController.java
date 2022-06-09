@@ -1,6 +1,7 @@
 package ru.skypro.homework.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +16,7 @@ import ru.skypro.homework.dto.pass.NewPassword;
 import ru.skypro.homework.dto.pass.ResetPassword;
 import ru.skypro.homework.dto.pass.ResetPasswordConfirm;
 
+@CrossOrigin(value = "http://localhost:3000")
 @RestController
 @RequestMapping("users")
 @RequiredArgsConstructor
