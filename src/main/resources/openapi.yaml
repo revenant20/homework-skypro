@@ -8,6 +8,56 @@ servers:
 security:
 - Basic: []
 paths:
+  /login/:
+    post:
+      security:
+        - No: []
+      operationId: asdasd
+      parameters:
+      - in: query
+        name: username
+        schema:
+          type: string
+      - in: query
+        name: password
+        schema:
+          type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          description: ""
+      tags:
+        - Авторизация
+      x-accepts: application/json
+  /register/:
+    post:
+      operationId: asdasd
+      parameters:
+        - in: query
+          name: username
+          schema:
+            type: string
+        - in: query
+          name: password
+          schema:
+            type: string
+        - in: query
+          name: role
+          schema:
+            type: string
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          description: ""
+      tags:
+        - Авторизация
+      x-accepts: application/json
   /ads/:
     get:
       operationId: Список всех объявлений

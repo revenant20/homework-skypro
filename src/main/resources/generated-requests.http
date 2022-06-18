@@ -7,4 +7,23 @@ Authorization: Basic user password
 ###
 GET http://localhost:8080/ads/asddsfsdf/comment
 Content-Type: application/json
-Authorization: Basic user password
+Authorization: Basic user12 password1
+
+###
+POST http://localhost:8080/login
+Content-Type: application/json
+
+{
+   "username": "user1",
+   "password": "password1"
+}
+
+###
+POST http://localhost:8080/register
+Content-Type: application/json
+
+{
+  "username": "user12",
+  "password": "password1"
+}
+
