@@ -52,6 +52,21 @@ public class AdsController {
         adsResponseWrapper.setCount(allAds.size());
         return adsResponseWrapper;
     }
+    @GetMapping("/{id}")
+    public FullAds getAds(@PathVariable("id") Integer id) {
+        return adsService.getById(id);
+    }
+
+    @PatchMapping("/{id}")
+    public Ads updateAds(@PathVariable("id") Integer id,
+                         @RequestBody Ads ads) {
+        return adsService.updateAds(id, ads);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
+    public void removeAds(@PathVariable("id") Integer id) {
+    }
 
     @GetMapping("/{ad_pk}/comment")
     public ResponseWrapper<AdsComment> getAdsComments(@PathVariable("ad_pk") String adPk) {
@@ -81,22 +96,6 @@ public class AdsController {
     @DeleteMapping("/{ad_pk}/comment/{id}")
     public void deleteAdsComment(@PathVariable("ad_pk") String adPk,
                                  @PathVariable("id") Integer id) {
-    }
-
-    @GetMapping("/{id}")
-    public FullAds getAds(@PathVariable("id") Integer id) {
-        return new FullAds();
-    }
-
-    @PatchMapping("/{id}")
-    public Ads updateAds(@PathVariable("id") Integer id,
-                         @RequestBody Ads ads) {
-        return new Ads();
-    }
-
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{id}")
-    public void removeAds(@PathVariable("id") Integer id) {
     }
 
 }

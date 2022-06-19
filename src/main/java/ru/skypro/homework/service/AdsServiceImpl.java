@@ -6,17 +6,19 @@ import ru.skypro.homework.dto.Ads;
 import ru.skypro.homework.dto.FullAds;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
 public class AdsServiceImpl implements AdsService {
 
-    private final List<FullAds> adsList = new ArrayList<>();
+    private final Map<Integer, FullAds> adsMap = new HashMap<>();
 
     @Override
     public List<Ads> getAllAds() {
-        return adsList.stream()
+        return adsMap.values().stream()
                 .map(Ads::fromFull)
                 .collect(Collectors.toList());
     }
@@ -31,15 +33,31 @@ public class AdsServiceImpl implements AdsService {
                 .description(ads.getDescription())
                 .pk(ads.getPk())
                 .build();
-        adsList.add(fullAds);
+        adsMap.put(ads.getPk(), fullAds);
         return Ads.fromFull(fullAds);
     }
 
     @Override
     public List<Ads> getByEmail(String email) {
-        return adsList.stream()
+        return adsMap.values().stream()
                 .filter(t -> t.getEmail().equals(email))
                 .map(Ads::fromFull)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public FullAds getById(Integer id) {
+        return adsMap.get(id);
+    }
+
+    @Override
+    public Ads updateAds(Integer id, Ads ads) {
+        FullAds fullAds = adsMap.get(id);
+        fullAds.setImage(ads.getImage());
+        fullAds.setPrice(ads.getPrice());
+        fullAds.setTitle(ads.getTitle());
+        fullAds.setPk(ads.getPk());
+        return Ads.fromFull(fullAds);
+    }
+
 }
