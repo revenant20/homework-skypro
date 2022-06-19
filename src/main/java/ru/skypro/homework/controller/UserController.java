@@ -22,11 +22,6 @@ import ru.skypro.homework.dto.pass.ResetPasswordConfirm;
 @RequiredArgsConstructor
 public class UserController {
 
-    @GetMapping
-    public ResponseWrapper<User> getALLUsers() {
-        return new ResponseWrapper<>();
-    }
-
     @PostMapping
     public CreateUser addUser(@RequestBody CreateUser user) {
         return new CreateUser();
