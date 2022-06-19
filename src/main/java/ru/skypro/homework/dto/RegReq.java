@@ -3,7 +3,7 @@ package ru.skypro.homework.dto;
 import lombok.Data;
 
 @Data
-public class ReqReq {
+public class RegReq {
     private String password;
     private String username;
     private Role role;
