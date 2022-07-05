@@ -1,5 +1,6 @@
 package ru.skypro.homework.controller;
 
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -15,6 +16,7 @@ import ru.skypro.homework.service.AuthService;
 
 import static ru.skypro.homework.dto.Role.USER;
 
+@Api(tags = "Авторизация")
 @Slf4j
 @CrossOrigin(value = "http://localhost:3000")
 @RestController

@@ -13,12 +13,19 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Configuration
 public class WebSecurityConfig {
 
+    private static final String[] AUTH_WHITELIST = {
+            "/swagger-resources/**",
+            "/swagger-ui.html",
+            "/v3/api-docs",
+            "/webjars/**",
+            "/login", "/register"
+    };
 
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
         UserDetails user = User.withDefaultPasswordEncoder()
-                .username("user1")
-                .password("password1")
+                .username("user")
+                .password("password")
                 .roles("USER")
                     .build();
         return new InMemoryUserDetailsManager(user);
@@ -27,9 +34,10 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf().ignoringAntMatchers("/login", "/register").and()
-                .authorizeHttpRequests((authz) -> authz
-                        .anyRequest().permitAll()
+                .csrf().ignoringAntMatchers(AUTH_WHITELIST).and()
+                .authorizeHttpRequests((authz) ->
+                        authz.mvcMatchers(AUTH_WHITELIST).permitAll()
+                                .anyRequest().permitAll()
                 )
                 .cors().disable()
                 .httpBasic(withDefaults());

@@ -1,5 +1,6 @@
 package ru.skypro.homework.controller;
 
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,9 +14,8 @@ import ru.skypro.homework.dto.CreateUser;
 import ru.skypro.homework.dto.ResponseWrapper;
 import ru.skypro.homework.dto.User;
 import ru.skypro.homework.dto.pass.NewPassword;
-import ru.skypro.homework.dto.pass.ResetPassword;
-import ru.skypro.homework.dto.pass.ResetPasswordConfirm;
 
+@Api(tags = "Пользователи")
 @CrossOrigin(value = "http://localhost:3000")
 @RestController
 @RequestMapping("users")
@@ -40,16 +40,6 @@ public class UserController {
     @GetMapping("/{id}")
     public User getUser(@PathVariable("id") Integer id) {
         return new User();
-    }
-
-    @PostMapping("/reset_password")
-    public ResetPassword resetPassword(@RequestBody ResetPassword resetPassword) {
-        return new ResetPassword();
-    }
-
-    @PostMapping("/reset_password_confirm")
-    public ResetPasswordConfirm resetPasswordConfirm(@RequestBody ResetPasswordConfirm resetPasswordConfirm) {
-        return new ResetPasswordConfirm();
     }
 
     @PostMapping("/set_password")

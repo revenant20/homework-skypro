@@ -1,5 +1,6 @@
 package ru.skypro.homework.controller;
 
+import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.Authentication;
@@ -11,8 +12,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import ru.skypro.homework.dto.Ads;
 import ru.skypro.homework.dto.AdsComment;
 import ru.skypro.homework.dto.CreateAds;
@@ -22,6 +25,7 @@ import ru.skypro.homework.service.AdsService;
 
 import java.util.List;
 
+@Api(tags = "Объявления")
 @CrossOrigin(value = "http://localhost:3000")
 @RestController
 @RequestMapping("/ads")
@@ -31,7 +35,7 @@ public class AdsController {
     private final AdsService adsService;
 
     @GetMapping()
-    public ResponseWrapper<Ads> getALLAds() {
+    public ResponseWrapper<Ads> getALLAds(@RequestParam MultipartFile file) {
         var adsResponseWrapper = new ResponseWrapper<Ads>();
         List<Ads> allAds = adsService.getAllAds();
         adsResponseWrapper.setResults(allAds);
@@ -52,6 +56,7 @@ public class AdsController {
         adsResponseWrapper.setCount(allAds.size());
         return adsResponseWrapper;
     }
+
     @GetMapping("/{id}")
     public FullAds getAds(@PathVariable("id") Integer id) {
         return adsService.getById(id);
