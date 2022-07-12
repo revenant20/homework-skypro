@@ -19,4 +19,6 @@ public class FullAds {
     private Integer pk;
     private String title;
     private String description;
+
+
 }

@@ -24,7 +24,7 @@ public class WebSecurityConfig {
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
         UserDetails user = User.withDefaultPasswordEncoder()
-                .username("user")
+                .username("user@gmail.com")
                 .password("password")
                 .roles("USER")
                     .build();
@@ -34,15 +34,17 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                .csrf().ignoringAntMatchers(AUTH_WHITELIST).and()
+                .csrf().disable()
                 .authorizeHttpRequests((authz) ->
                         authz.mvcMatchers(AUTH_WHITELIST).permitAll()
-                                .anyRequest().permitAll()
+                                .mvcMatchers("/ads/**", "/users/**").authenticated()
+
                 )
-                .cors().disable()
                 .httpBasic(withDefaults());
         return http.build();
     }
+
+
 
 }
 

@@ -7,15 +7,18 @@ Authorization: Basic user password
 ###
 GET http://localhost:8080/ads/asddsfsdf/comment
 Content-Type: application/json
-Authorization: Basic user1 password1
+Authorization: Basic user password
 
 ###
 POST http://localhost:8080/login
 Content-Type: application/json
 
 {
-   "username": "user1",
-   "password": "password1"
+   "username": "user",
+   "password": "password",
+   "firstName":  " asdad",
+   "lastName": " asdad",
+   "phone":  " asdad"
 }
 
 ###
@@ -30,11 +33,66 @@ Content-Type: application/json
 ###
 GET http://localhost:8080/ads/me
 Content-Type: application/json
-Authorization: Basic user password1
+Authorization: Basic user password
 
 ###
-POST http://localhost:8080/ads/upd
-Authorization: Basic user1 password1
-Content-Type: multipart/form-data; boundary=--------------------------065697369846588826635611
-Content-Disposition: form-data; name=""; filename="Снимок экрана 2022-07-04 в 19.34.53.png"; filename*="UTF-8''%D0%A1%D0%BD%D0%B8%D0%BC%D0%BE%D0%BA%20%D1%8D%D0%BA%D1%80%D0%B0%D0%BD%D0%B0%202022-07-04%20%D0%B2%2019.34.53.png"<Снимок экрана 2022-07-04 в 19.34.53.png>----------------------------012723338610864285261567--
+GET http://localhost:8080/users/me
+Content-Type: application/json
+Authorization: Basic user@gmail.com password
+
+###
+PATCH http://localhost:8080/users/me
+Content-Type: application/json
+Authorization: Basic user password
+
+{
+  "phone": "33333",
+  "lastName": "Ivanov",
+  "firstName": "Ivan",
+  "email": "user",
+  "id": 1
+}
+
+###
+GET http://localhost:8080/users/1
+Content-Type: application/json
+Authorization: Basic user password
+
+###
+GET http://localhost:8080/ads
+Content-Type: application/json
+Authorization: Basic user password
+
+
+###
+POST http://localhost:8080/users/set_password
+Content-Type: application/json
+Authorization: Basic user password
+
+{
+  "newPassword": "password",
+  "currentPassword": "password1"
+}
+
+###
+POST http://localhost:8080/ads
+Content-Type: application/json
+Authorization: Basic user password
+
+{
+  "image": "123",
+  "price": 123,
+  "description": "123",
+  "pk": 1233,
+  "title": "123"
+}
+
+###
+GET http://localhost:8080/ads
+Content-Type: application/json
+Authorization: Basic user password
+
+
+
+
 
