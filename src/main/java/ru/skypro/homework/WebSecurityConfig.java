@@ -24,7 +24,7 @@ public class WebSecurityConfig {
     @Bean
     public InMemoryUserDetailsManager userDetailsService() {
         UserDetails user = User.withDefaultPasswordEncoder()
-                .username("user")
+                .username("user@gmail.com")
                 .password("password")
                 .roles("USER")
                     .build();
@@ -39,6 +39,7 @@ public class WebSecurityConfig {
                         authz.mvcMatchers(AUTH_WHITELIST).permitAll()
                                 .anyRequest().permitAll()
                 )
+                .csrf().disable()
                 .cors().disable()
                 .httpBasic(withDefaults());
         return http.build();
