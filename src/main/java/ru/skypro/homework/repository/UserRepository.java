@@ -7,4 +7,6 @@ import ru.skypro.homework.repository.entity.UserEn;
 @Repository
 public interface UserRepository extends JpaRepository<UserEn, Integer> {
     UserEn findByUsername(String username);
+
+    boolean existsByUsername(String username);
 }

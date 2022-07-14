@@ -1,10 +1,6 @@
 package ru.skypro.homework.service.impl;
 
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.UserDetailsManager;
+
 import org.springframework.stereotype.Service;
 import ru.skypro.homework.dto.RegReq;
 import ru.skypro.homework.dto.Role;
@@ -15,8 +11,8 @@ import ru.skypro.homework.service.AuthService;
 import java.util.Optional;
 
 @Service
-public class AuthServiceImpl implements AuthService {
-
+public class AuthServiceImpl  {
+/*
     private final UserDetailsManager manager;
 
     private final PasswordEncoder encoder;
@@ -79,5 +75,5 @@ public class AuthServiceImpl implements AuthService {
                         .build()
         );
         return true;
-    }
+    }*/
 }
